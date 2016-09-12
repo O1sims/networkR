@@ -1,6 +1,6 @@
 #' Represent a hypergraph as a network of affiliations
 #'
-#' This function projects a hypergraph into a network of affiliations
+#' This function projects a hypergraph into a network of affiliations.
 #' @param hypergraph A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.
 #' @keywords affiliation projection
 #' @export

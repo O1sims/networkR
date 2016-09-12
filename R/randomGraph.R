@@ -1,3 +1,14 @@
+#' Generate a random network
+#'
+#' The function generates a randomly connected network.
+#' @param n The number of nodes to be present within the network.
+#' @param p The probability that any two nodes are connected together.
+#' @param undirected should the randomly generated network be undirected? TRUE or FALSE.
+#' @keywords random graph network
+#' @export
+#' @examples
+#' randomGraph()
+
 randomGraph <- function(n, p, undirected) {
   if (n < 2) {
     return(print("You need a population of more than 1 node..."))
@@ -12,9 +23,7 @@ randomGraph <- function(n, p, undirected) {
     m <- max(1, n * round(n * p,
                           digits = 0))
   }
-  if (missing(undirected)) {
-    undirected <- FALSE
-  }
+  if (missing(undirected)) { undirected <- FALSE }
   network <- data.frame(sources = round(runif(n = m,
                                               min = 1,
                                               max = n),

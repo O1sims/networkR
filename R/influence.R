@@ -1,4 +1,16 @@
-sigmaScore <- function(hypergraph, nodeNames, affiliationNames, weights) {
+#' Calculate the  influence of nodes and affiliations
+#'
+#' The function calculates the influence of nodes and affiliations within a hypergraph. The measure accepts weights, or values, distributed over affiliations.
+#' @param hypergraph A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.
+#' @param nodeNames A dataframe where all nodes and their respective names are listed.
+#' @param affiliationNames A dataframe where all affiliations and their respective names are listed.
+#' @param weight The weight or value of an affiliation.
+#' @keywords influence
+#' @export
+#' @examples
+#' nodeInfluence()
+
+nodeInfluence <- function(hypergraph, nodeNames, affiliationNames, weights) {
   if (missing(weights)) {
     weights <- rep(1, nrow(affiliationNames))
   }
@@ -19,8 +31,7 @@ sigmaScore <- function(hypergraph, nodeNames, affiliationNames, weights) {
   return(round(sigma, digits = 3))
 }
 
-
-normSigmaScore <- function(hypergraph, nodeNames, affiliationNames, weights) {
+nodeNormInfluence <- function(hypergraph, nodeNames, affiliationNames, weights) {
   if (missing(weights)) {
     weights <- rep(1,
                    nrow(affiliationNames))
@@ -33,8 +44,7 @@ normSigmaScore <- function(hypergraph, nodeNames, affiliationNames, weights) {
   return(sigma)
 }
 
-
-sigmaScoreAffiliation <- function(hypergraph, nodeNames, affiliationNames, weights) {
+affiliationInfluence <- function(hypergraph, nodeNames, affiliationNames, weights) {
   if (missing(weights)) {
     weights <- rep(1,
                    max(affiliationNames$number))

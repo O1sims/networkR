@@ -1,3 +1,12 @@
+#' Filter network
+#'
+#' This function filters a network such that it removes any duplicated connections, or more specifically arcs, between a pair of nodes.
+#' @param network A dataframe of network data where sources are in the first column and targets are in the second column.
+#' @keywords filter
+#' @export
+#' @examples
+#' filterNetwork()
+
 filterNetwork <- function(network) {
   for (i in 1:(nrow(network) - 1)) {
     for (j in (i + 1):nrow(network)) {

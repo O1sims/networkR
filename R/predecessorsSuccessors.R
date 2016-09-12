@@ -1,3 +1,16 @@
+#' Find the predecessors and successors of a node or node set
+#'
+#' This function calculates the predecessors and successors of a node or node set.
+#' @param network A dataframe of network data within which sources are in the first column and targets are in the second column.
+#' @param nodeNames A dataframe within which all nodes and their respective names are listed.
+#' @param s The maximum size of block that is considered within the block formation game.
+#' @param adjMatrix The network represented as an adjacency matrix.
+#' @param approximate Should the number of sets considered be truncated? TRUE or FALSE.
+#' @keywords node predecessors successors
+#' @export
+#' @examples
+#' predecessorsSuccessors()
+
 predecessorsSuccessors <- function(network, nodeNames, adjMatrix) {
   if (missing(adjMatrix)) {
     adjMatrix <- adjacenyMatrix(network, nodeNames)
@@ -23,17 +36,12 @@ predecessorsSuccessors <- function(network, nodeNames, adjMatrix) {
   return(noPredecessorsSuccessors)
 }
 
-
 setPredSucc <- function(network, nodeNames, s, adjMatrix, approximate) {
-  if (missing(s)) {
-    s <- nrow(nodeNames) - 2
-  }
+  if (missing(s)) { s <- nrow(nodeNames) - 2 }
   if (s > nrow(nodeNames) - 2) {
     return(print("s must be less than or equal to number of nodes in network minus 2 [s <= nrow(nodeNames) - 2]"))
   }
-  if (missing(approximate)) {
-    approximate <- FALSE
-  }
+  if (missing(approximate)) { approximate <- FALSE }
   if (missing(adjMatrix)) {
     adjMatrix <- adjacenyMatrix(network,
                                 nodeNames)

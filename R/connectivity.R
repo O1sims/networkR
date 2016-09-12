@@ -1,3 +1,14 @@
+#' Connectivity of a network
+#'
+#' This function calculates the connectivity of a network by summing the number of unique successors of each node within the network.
+#' @param network A dataframe of network data within which sources are in the first column and targets are in the second column.
+#' @param nodeNames A dataframe within which all nodes and their respective names are listed.
+#' @param adjMatrix The network represented as an adjacency matrix.
+#' @keywords connectivity
+#' @export
+#' @examples
+#' connectivity()
+
 connectivity <- function(network, nodeNames, adjMatrix) {
   if (missing(adjMatrix)) {
     adjMatrix <- adjacenyMatrix(network,

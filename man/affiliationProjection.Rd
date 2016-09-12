@@ -10,7 +10,7 @@ affiliationProjection(hypergraph)
 \item{hypergraph}{A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.}
 }
 \description{
-This function projects a hypergraph into a network of affiliations
+This function projects a hypergraph into a network of affiliations.
 }
 \examples{
 affiliationProjection()

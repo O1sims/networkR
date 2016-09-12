@@ -1,8 +1,8 @@
 #' Calculate node degree
 #'
 #' This function calculates the degree of all nodes in the network. This includes counting the in-degree and out-degree of each node.
-#' @param network A dataframe of network data where sources are in the first column and targets are in the second column
-#' @param nodeNames A dataframe where all nodes and their respective names are listed
+#' @param network A dataframe of network data where sources are in the first column and targets are in the second column.
+#' @param nodeNames A dataframe where all nodes and their respective names are listed.
 #' @keywords degree
 #' @export
 #' @examples
