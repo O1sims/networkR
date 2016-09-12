@@ -1,3 +1,13 @@
+#' Transform network data into an adjacency matrix
+#'
+#' This function transforms network data into an n-by-n adjacency matrix.
+#' @param hypergraph A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.
+#' @param affiliationNames A dataframe where all affiliations and their respective names are listed.
+#' @keywords affiliation environment
+#' @export
+#' @examples
+#' affiliationEnviornment()
+
 affiliationEnviornment <- function(hypergraph, affiliationNames) {
   for (i in 1:nrow(affiliationNames)) {
     members <- subset(hypergraph$nodes,

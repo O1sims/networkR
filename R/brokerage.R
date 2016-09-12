@@ -1,5 +1,19 @@
-# Brokerage of node set `perCapita` generates the Brokerage measure
-blockPower <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, approximate) {
+#' Calculate the brokerage of each node set within the network
+#'
+#' This function calculates the brokerage of each node set within the network.
+#' @param network A dataframe of network data within which sources are in the first column and targets are in the second column.
+#' @param nodeNames A dataframe within which all nodes and their respective names are listed.
+#' @param s The maximum size of block that is considered within the block formation game.
+#' @param adjMatrix The network represented as an adjacency matrix
+#' @param setPS The set of predeccessors and successors for each combination of nodes considered.
+#' @param perCapita The brokerage power of the node set divided by the number of nodes within the set.
+#' @param approximate Should the Strong Nash Equilibrium be approximated? TRUE or FALSE.
+#' @keywords brokerage
+#' @export
+#' @examples
+#' brokerage()
+
+brokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, approximate) {
   if (missing(adjMatrix)) {
     originalAdjMatrix <- adjMatrix <- adjacenyMatrix(network,
                                                      nodeNames)

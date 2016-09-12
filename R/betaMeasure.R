@@ -1,5 +1,13 @@
-# \beta_{i}(D) Beta measure (Gilles and van den Brink)
-# This is a generalised measure and will take in a weighted network
+#' Generalised $\beta$-measure (Gilles and van den Brink, 2000) applied to each node
+#'
+#' This function calculates the generalised $\beta$-measure, or dominance, of each node as discussed in Gilles and ven den Brink (2000). This will also consider a weighted network.
+#' @param network A dataframe of network data within which sources are in the first column and targets are in the second column.
+#' @param nodeNames A dataframe within which all nodes and their respective names are listed.
+#' @keywords beta-measure
+#' @export
+#' @examples
+#' betaMeasure()
+
 betaMeasure <- function(network, nodeNames) {
   inDeg <- Beta <- 0
   for (i in 1:nrow(nodeNames)) {
