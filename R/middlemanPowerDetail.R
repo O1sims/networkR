@@ -9,25 +9,6 @@
 #' @examples
 #' middlemanPowerDetail()
 
-strongWeak <- function(network, nodeNames, adjMatrix) {
-  if (missing(adjMatrix)) {
-    adjMatrix <- adjacenyMatrix(network, nodeNames)
-  }
-  power <- middlemanPower(network, nodeNames, adjMatrix)
-  unAdjMatrix <- undirectedAdjMatrix(network, nodeNames, adjMatrix)
-  unPower <- middlemanPower(network, nodeNames, unAdjMatrix)
-  middlemanType <- sapply(1:length(power), function(x) {
-    if (unPower[x] == 0 & power[x] == 0) {
-      "Non-middleman"
-    } else if (unPower[x] == 0 & power[x] > 0) {
-      "Weak middleman"
-    } else {
-      "Strong middleman"
-    }
-  })
-  return(middlemanType)
-}
-
 middlemanPowerDetail <- function(network, nodeNames, adjMatrix) {
   if (missing(adjMatrix)) {
     adjMatrix <- adjacenyMatrix(network,

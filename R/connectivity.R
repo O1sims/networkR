@@ -16,7 +16,7 @@ connectivity <- function(network, nodeNames, adjMatrix) {
   }
   adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")
   for (i in 1:nrow(adjMatrix)) {
-    adjMatrix <- adjMatrix + (adjMatrix %^% i)
+    adjMatrix <- adjMatrix + expm::`%^%`(adjMatrix, i)
     adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")
   }
   for (i in 1:nrow(adjMatrix)) {

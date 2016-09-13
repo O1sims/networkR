@@ -76,31 +76,3 @@ setBrokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, app
   }
   return(setPS)
 }
-
-
-nodeSetBrokerage <- function(network, nodeNames, s, perCapita, adjMatrix, setPS, setPower, approximate) {
-  if (missing(s)) {
-    s <- nrow(nodeNames) - 2
-  }
-  if (missing(perCapita)) {
-    perCapita <- TRUE
-  }
-  if (missing(approximate)) {
-    approximate <- FALSE
-  }
-  setBrokerage <- blockPower(network,
-                             nodeNames,
-                             s = s,
-                             perCapita = perCapita,
-                             approximate = approximate)
-  nodeSetBrokerage <- 0
-  for (i in 1:nrow(nodeNames)) {
-    r <- setBrokerage
-    t <- sapply(1:nrow(r), function(x) i %in% r$set[[x]])
-    r <- r[t, ]
-    nodeSetBrokerage[i] <- sum(r$powerCapita)
-  }
-  nodeSetBrokerage <- round(nodeSetBrokerage/sum(setBrokerage$powerCapita),
-                            digits = 3)
-  return(nodeSetBrokerage)
-}

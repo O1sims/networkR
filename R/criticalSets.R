@@ -17,13 +17,13 @@ criticalSets <- function(network, nodeNames, s, adjMatrix, setPS, setPower, appr
   if (missing(s)) { s <- nrow(nodeNames) - 2 }
   if (missing(approximate)) { approximate <- FALSE }
   if (missing(setPower)) {
-    setPower <- blockPower(network,
-                           nodeNames,
-                           s,
-                           adjMatrix,
-                           setPS,
-                           perCapita = FALSE,
-                           approximate = approximate)
+    setPower <- setBrokerage(network,
+                             nodeNames,
+                             s = s,
+                             adjMatrix,
+                             setPS,
+                             perCapita = FALSE,
+                             approximate = approximate)
   }
   criticalSets <- subset(setPower,
                          setPower$power > 0)

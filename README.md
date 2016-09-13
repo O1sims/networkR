@@ -53,9 +53,12 @@ A number of example or test data are provided. These can be used to test the fun
 
 Consider the directed network in `network1Nodes.rda` and `network1Edges.rda`. The network contains 7 nodes---one of which is a source and another is a sink---and 8 arcs that can be interpreted as the flow of information, money, or economic goods: node 1 is connected to node 7 through the intermediation of other nodes in the network. The network of relationships is plotted in the Figure below.
 
-## 3 Using `networkR` on networks
+## 3 Analysing networks
 
-Let's look at a number of `networkR` functions applied to `network1Nodes.rda` and `network1Edges.rda`. Load these files up.
+Let's look at a number of `networkR` functions applied to the first test network (`network1Nodes.rda` and `network1Edges.rda`). Load these files up.
+
+    > library(networkR)
+    > data(list = c("test1Nodes", "test1Edges")) 
 
 ### 3.1 Middlemen and middleman power
 
@@ -105,7 +108,7 @@ The coverage of each node set in the 7 node network is given by:
 	118: 2,4,5,6,7     5                      1,3      0      2        0
 	119: 3,4,5,6,7     5                      1,2      0      2        0
 
-The brokerage, or middleman power, of each node set can be derived in much the same way. This is done by executing the `blockPower()` function. We arrive at the following output:
+The brokerage, or middleman power, of each node set can be derived in much the same way. This is done by executing the `setBrokerage()` function. We arrive at the following output:
 
 	> setBrokerage(network, N)
 			 set setSize  successors predecessors noSucc noPred power
@@ -141,7 +144,7 @@ This function also provides the middleman power per capita.
 
 ### 3.3 Criticality
 
-The criticality of individual or sets of nodes is a measure of their assumed brokerage after they have been allowed the ability to form coalitions and actively broker relations. It is therefore a measure based on the resulting stable sets. Within the monograph we use the notion of Strong Nash equilibrium (SNE) to determine the stability of a coalition within a network. Each network also has some cost of formation; this cost function can also be determined within the model itself.
+The criticality of individual or sets of nodes is a measure of their assumed brokerage after they have been allowed the ability to form coalitions and actively broker relations. It is therefore a measure based on the resulting stable sets. We use the notion of Strong Nash equilibrium (SNE) to determine the stability of a coalition within a network. Each coalition also has some cost of formation; this cost function can also be determined within the model itself.
 
 For example, when considering the network of 7 nodes when there exists no costs in forming blocks we can determine the SNE as follows:
 
@@ -164,26 +167,26 @@ The criticality of individual nodes can be calculated from all potential SNE blo
 	> nodeNormCriticality(network, N)
 	[1] 0.0 0.2 0.2 0.3 0.3 0.5 0.0
 
-## 4 Using `networkR` on hypergraphs
+## 4 Analysing hypergraphs
 
-A set of functions for analysing hypergraphs is also provided. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a nodes' or an affiiations' "control" within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. These are discussed in Chapter 7 of the monograph. Using the NYC Director data (`NYCDirectors.R`) we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
+A set of functions for analysing hypergraphs is also provided. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a nodes' or an affiiations' "control" within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. Using the NYC Director data we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
 
-    > source("~/path/to/NYCDirectors.R")
+    > data(list = c("nycNodes", "nycAffiliations", "nycHypergraph"))
     > projection <- filterNetwork(affiliationProjection(hypergraph))
     > plot(graph_from_data_frame(projection,
                            directed = FALSE),
-           vertex.color = types,
-           vertex.label = NA,
-           vertex.label.dist = 3,
-           vertex.label.color = "black",
-           vertex.size = log(valuations)/5,
-           edge.width = projection$weight,
-           edge.color = "grey50",
-           edge.arrow.size = 0)
+          vertex.color = affiliationList$types,
+          vertex.label = NA,
+          vertex.label.dist = 3,
+          vertex.label.color = "black",
+          vertex.size = log(affiliationList$valuations)/5,
+          edge.width = projection$weight,
+          edge.color = "grey50",
+          edge.arrow.size = 0)
 
 ![](data/images/weightedInstitutions.png "Overlapping directorate network of NYC")
 
-It is important to understand the structure of the hypergraph data that needs to be passed to the functions. Following example `hypergraphData1.R` should help with this. Data is structured such that a bipartite network is expressed: `nodes` are connected to `affiliations` by an edge, however a set of nodes nor a set of affiliations are connected to each other directly.
+It is important to understand the structure of the hypergraph data that needs to be passed to the functions. Data is structured such that a bipartite network is expressed: `nodes` are connected to `affiliations` by an edge, however a set of nodes nor a set of affiliations are connected to each other directly.
 
 ### 4.1 Aspectual hypergraphs
 

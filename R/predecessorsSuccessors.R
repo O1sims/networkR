@@ -17,7 +17,7 @@ predecessorsSuccessors <- function(network, nodeNames, adjMatrix) {
   }
   adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")
   for (i in 1:nrow(adjMatrix)) {
-    adjMatrix <- adjMatrix + (adjMatrix %^% i)
+    adjMatrix <- adjMatrix + expm::`%^%`(adjMatrix, i)
     adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")
   }
   for (i in 1:nrow(adjMatrix)) {
@@ -48,7 +48,7 @@ setPredSucc <- function(network, nodeNames, s, adjMatrix, approximate) {
   }
   adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")
   for (i in 1:nrow(adjMatrix)) {
-    adjMatrix <- adjMatrix + (adjMatrix %^% i)
+    adjMatrix <- adjMatrix + expm::`%^%`(adjMatrix, i)
     adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")
   }
   for (i in 1:nrow(adjMatrix)) {
@@ -66,7 +66,6 @@ setPredSucc <- function(network, nodeNames, s, adjMatrix, approximate) {
                               replace = FALSE)]
       }
     }
-    print(paste0("s = ", i, ". Analysing ", ncol(sets)," sets."))
     for (j in 1:ncol(sets)) {
       set <- sets[, j]
       successors <- predecessors <- noSucc <- noPred <- 0
@@ -104,10 +103,11 @@ setPredSucc <- function(network, nodeNames, s, adjMatrix, approximate) {
                   predecessors = list(predecessors),
                   noSucc = list(noSucc),
                   noPred = list(noPred))
-        PS <- rbindlist(list(PS, a), use.names = TRUE, fill = TRUE)
+        PS <- data.table::rbindlist(list(PS, a),
+                                    use.names = TRUE,
+                                    fill = TRUE)
       }
     }
-    print(paste0("Finished s = ", i, " (Time taken ", Sys.time() - time,")"))
   }
   return(PS)
 }
