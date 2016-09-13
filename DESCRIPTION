@@ -2,11 +2,18 @@ Package: networkR
 Title: A package to analyse network data
 Version: 0.0.0.9000
 Authors@R: person("Owen", "Sims", email = "sims.owen@gmail.com", role = c("aut", "cre"))
+Maintainer: Owen Sims <sims.owen@gmail.com>
 Description: This package provides a number of functions to analyse the
     structure and statistics of networks and hypergraphs.
+URL: https://github.com/OwenSims/networkR
+BugReports: URL: https://github.com/OwenSims/networkR/issues
+License: MIT
 Depends:
-    R (>= 3.2.3)
-License: GPL-2
+    R (>= 3.0.0)
+Imports:
+    ggplot2,
+    expm,
+    igraph
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 5.0.1

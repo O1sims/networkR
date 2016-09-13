@@ -1,6 +1,6 @@
-#' Calculate the brokerage of each node set within the network
+#' Brokerage of each node set within the network
 #'
-#' This function calculates the brokerage of each node set within the network.
+#' This function calculates the brokerage of each set of nodes within the network.
 #' @param network A dataframe of network data within which sources are in the first column and targets are in the second column.
 #' @param nodeNames A dataframe within which all nodes and their respective names are listed.
 #' @param s The maximum size of block that is considered within the block formation game.
@@ -11,9 +11,9 @@
 #' @keywords brokerage
 #' @export
 #' @examples
-#' brokerage()
+#' setBrokerage()
 
-brokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, approximate) {
+setBrokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, approximate) {
   if (missing(adjMatrix)) {
     originalAdjMatrix <- adjMatrix <- adjacenyMatrix(network,
                                                      nodeNames)
@@ -32,7 +32,7 @@ brokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, approx
   if (missing(setPS)) {
     setPS <- setPredSucc(network,
                          nodeNames,
-                         s,
+                         s = s,
                          adjMatrix,
                          approximate = approximate)
   }
@@ -78,7 +78,6 @@ brokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, approx
 }
 
 
-# \overline{\beta}_i
 nodeSetBrokerage <- function(network, nodeNames, s, perCapita, adjMatrix, setPS, setPower, approximate) {
   if (missing(s)) {
     s <- nrow(nodeNames) - 2

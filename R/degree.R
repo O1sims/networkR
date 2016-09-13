@@ -1,6 +1,6 @@
 #' Calculate node degree
 #'
-#' This function calculates the degree of all nodes in the network. This includes counting the in-degree and out-degree of each node.
+#' This function calculates the degree of all nodes in the network. This includes counting the in-degree and out-degree of each node. Averages of all degrees are also considered.
 #' @param network A dataframe of network data where sources are in the first column and targets are in the second column.
 #' @param nodeNames A dataframe where all nodes and their respective names are listed.
 #' @keywords degree
@@ -24,4 +24,12 @@ degree <- function(network, nodeNames) {
                     outDegree = outDeg,
                     degree = degree)
   return(deg)
+}
+
+averageDegree <- function(network, nodeNames) {
+  deg <- degree(network, nodeNames)
+  avgDegree <- data.frame(avgInDegree = sum(deg$inDegree)/nrow(nodeNames),
+                          avgOutDegree = sum(deg$outDegree)/nrow(nodeNames),
+                          avgDegree = sum(deg$degree)/nrow(nodeNames))
+  return(round(avgDegree, digits = 3))
 }
