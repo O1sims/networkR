@@ -12,7 +12,7 @@ degree(network, nodeNames)
 \item{nodeNames}{A dataframe where all nodes and their respective names are listed.}
 }
 \description{
-This function calculates the degree of all nodes in the network. This includes counting the in-degree and out-degree of each node.
+This function calculates the degree of all nodes in the network. This includes counting the in-degree and out-degree of each node. Averages of all degrees are also considered.
 }
 \examples{
 degree()
