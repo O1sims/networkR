@@ -11,7 +11,7 @@
 
 isUndirected <- function(edgeList, nodeList, adjMatrix) {
   if (missing(adjMatrix)) {
-    adjMatrix <- adjacenyMatrix(edgeList,
+    adjMatrix <- adjacencyMatrix(edgeList,
                                 nodeList)
   }
   return(FALSE %in% (adjMatrix == t(adjMatrix)) == FALSE)

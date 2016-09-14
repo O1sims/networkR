@@ -16,7 +16,7 @@ setCoverage <- function(edgeList, nodeList, s, adjMatrix, setPS, approximate) {
   if (missing(s)) { s <- nrow(nodeList) - 2 }
   if (missing(approximate)) { approximate <- FALSE }
   if (missing(adjMatrix)) {
-    originalAdjMatrix <- adjMatrix <- adjacenyMatrix(edgeList,
+    originalAdjMatrix <- adjMatrix <- adjacencyMatrix(edgeList,
                                                      nodeList)
   } else {
     originalAdjMatrix <- adjMatrix

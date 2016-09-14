@@ -11,7 +11,7 @@
 
 undirectedAdjMatrix <- function(edgeList, nodeList, adjMatrix) {
   if (missing(adjMatrix)) {
-    adjMatrix <- adjacenyMatrix(edgeList,
+    adjMatrix <- adjacencyMatrix(edgeList,
                                 nodeList)
   }
   adjMatrix <- adjMatrix + t(adjMatrix)

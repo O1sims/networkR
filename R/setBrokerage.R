@@ -15,7 +15,7 @@
 
 setBrokerage <- function(edgeList, nodeList, s, adjMatrix, setPS, perCapita, approximate) {
   if (missing(adjMatrix)) {
-    originalAdjMatrix <- adjMatrix <- adjacenyMatrix(edgeList,
+    originalAdjMatrix <- adjMatrix <- adjacencyMatrix(edgeList,
                                                      nodeList)
   } else {
     originalAdjMatrix <- adjMatrix

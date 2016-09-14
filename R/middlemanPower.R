@@ -11,7 +11,7 @@
 
 middlemanPower <- function(edgeList, nodeList, adjMatrix, normalised) {
   if (missing(adjMatrix)) {
-    originalAdjMatrix <- adjMatrix <- adjacenyMatrix(edgeList, nodeList)
+    originalAdjMatrix <- adjMatrix <- adjacencyMatrix(edgeList, nodeList)
   } else {
     originalAdjMatrix <- adjMatrix
   }

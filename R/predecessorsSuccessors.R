@@ -11,7 +11,7 @@
 
 predecessorsSuccessors <- function(edgeList, nodeList, adjMatrix) {
   if (missing(adjMatrix)) {
-    adjMatrix <- adjacenyMatrix(edgeList, nodeList)
+    adjMatrix <- adjacencyMatrix(edgeList, nodeList)
   }
   adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")
   for (i in 1:nrow(adjMatrix)) {
@@ -26,7 +26,7 @@ predecessorsSuccessors <- function(edgeList, nodeList, adjMatrix) {
     noSuccessors[i] <- length(which(adjMatrix[i, ] == 1))
     noPredecessors[i] <- length(which(adjMatrix[, i] == 1))
   }
-  adjMatrix <- adjacenyMatrix(edgeList, nodeList)
+  adjMatrix <- adjacencyMatrix(edgeList, nodeList)
   noPredecessorsSuccessors <- data.frame(nodeNumber = seq(1, nrow(adjMatrix)),
                                          nodeName = nodeList[, 2],
                                          noPred = noPredecessors,

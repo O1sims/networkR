@@ -9,7 +9,7 @@
 #' adjacencyDF()
 
 adjacencyDF <- function(edgeList, nodeList) {
-  networkDF <- adjacenyMatrix(edgeList = edgeList,
+  networkDF <- adjacencyMatrix(edgeList = edgeList,
                               nodeList = nodeList)
   networkDF <- as.data.frame.matrix(networkDF)
   colnames(networkDF) <- rownames(networkDF) <- nodeList[, 2]

@@ -11,7 +11,7 @@
 
 strongWeak <- function(edgeList, nodeList, adjMatrix) {
   if (missing(adjMatrix)) {
-    adjMatrix <- adjacenyMatrix(edgeList, nodeList)
+    adjMatrix <- adjacencyMatrix(edgeList, nodeList)
   }
   power <- middlemanPower(edgeList, nodeList, adjMatrix)
   unAdjMatrix <- undirectedAdjMatrix(edgeList, nodeList, adjMatrix)

@@ -18,7 +18,7 @@ setPredSucc <- function(edgeList, nodeList, s, adjMatrix, approximate) {
   }
   if (missing(approximate)) { approximate <- FALSE }
   if (missing(adjMatrix)) {
-    adjMatrix <- adjacenyMatrix(edgeList,
+    adjMatrix <- adjacencyMatrix(edgeList,
                                 nodeList)
   }
   adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")

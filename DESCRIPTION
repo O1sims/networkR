@@ -1,5 +1,5 @@
 Package: networkR
-Title: A package to analyse network data
+Title: A package for analysing social and economic networks
 Version: 0.0.0.9000
 Authors@R: person("Owen", "Sims", email = "sims.owen@gmail.com", role = c("aut", "cre"))
 Maintainer: Owen Sims <sims.owen@gmail.com>
