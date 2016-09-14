@@ -8,9 +8,11 @@ Description: This package provides a number of functions to analyse the
 URL: https://github.com/OwenSims/networkR
 BugReports: URL: https://github.com/OwenSims/networkR/issues
 License: MIT
-Depends: 
+Suggests:
+    testthat
+Depends:
     R (>= 3.0.0)
-Imports: 
+Imports:
     ggplot2,
     expm,
     data.table,

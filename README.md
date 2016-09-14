@@ -188,9 +188,28 @@ A set of functions for analysing hypergraphs is also provided. These functions r
 
 It is important to understand the structure of the hypergraph data that needs to be passed to the functions. Data is structured such that a bipartite network is expressed: `nodes` are connected to `affiliations` by an edge, however a set of nodes nor a set of affiliations are connected to each other directly.
 
-### 4.1 Aspectual hypergraphs
+### 4.1 Elites in aspectual hypergraphs
 
 Affiliations within a hypergraph can be associated within an "aspect". As such, an affiliation can be associated with one and only one affiliation. We consider these cases and discuss the analysis and formation of elite networks in aspectual hypergraphs.
+
+For example, when analysing director networks each firm exists within one industry and therefore one aspect of the economy. An elite director is one who is on the board of companies of every industry under analysis.
+
+    > data(list = c("nycNodes", "nycAffiliations", "nycHypergraph"))
+    > elites(nycHypergraph, nycNodes, nycAffiliations, nycAffiliations$types)
+         number                nodes
+      1:       212        JAMES H. HYDE
+      2:      220        E.H. HARRIMAN
+      3:      240    SAMUEL D. BABCOCK
+      4:      268      GEORGE F. BAKER
+      5:      272     JOHN JACOB ASTOR
+      ---
+      31:   1886      GEORGE J. GOULD
+      32:   1956         BRAYTON IVES
+      33:   2131      STUYVESANT FISH
+      34:   2679 N. PARKER SHORTRIDGE
+      35:   2907      JACOB H. SCHIFF
+
+All directors listed were seen as influential during this time period.
 
 ## 5 Other functions
 
