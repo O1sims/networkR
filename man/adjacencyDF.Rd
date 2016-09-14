@@ -4,12 +4,12 @@
 \alias{adjacencyDF}
 \title{Transform network data into a data frame adjacency matrix}
 \usage{
-adjacencyDF(network, nodeNames)
+adjacencyDF(edgeList, nodeList)
 }
 \arguments{
-\item{network}{A dataframe of network data where sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data where sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe where all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe where all nodes and their respective names are listed.}
 }
 \description{
 This function transforms network data into an n-by-n adjacency matrix dressed up as a data frame.

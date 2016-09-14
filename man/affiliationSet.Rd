@@ -4,12 +4,12 @@
 \alias{affiliationSet}
 \title{List the affiliation memberships of each node}
 \usage{
-affiliationSet(hypergraph, nodeNames)
+affiliationSet(edgeList, nodeList)
 }
 \arguments{
-\item{hypergraph}{A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.}
+\item{edgeList}{A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.}
 
-\item{nodeNames}{A dataframe where all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe where all nodes and their respective names are listed.}
 }
 \description{
 This function returns a list of the membership of each node in the hypergraph

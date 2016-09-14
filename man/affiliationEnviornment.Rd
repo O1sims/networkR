@@ -2,14 +2,14 @@
 % Please edit documentation in R/affiliationEnvironment.R
 \name{affiliationEnviornment}
 \alias{affiliationEnviornment}
-\title{Transform network data into an adjacency matrix}
+\title{Find the affiliation neighbourhood of each affiliation}
 \usage{
-affiliationEnviornment(hypergraph, affiliationNames)
+affiliationEnviornment(edgeList, affiliationList)
 }
 \arguments{
-\item{hypergraph}{A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.}
+\item{edgeList}{A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.}
 
-\item{affiliationNames}{A dataframe where all affiliations and their respective names are listed.}
+\item{affiliationList}{A dataframe where all affiliations and their respective names are listed.}
 }
 \description{
 This function transforms network data into an n-by-n adjacency matrix.

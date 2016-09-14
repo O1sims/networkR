@@ -4,12 +4,12 @@
 \alias{blockSNE}
 \title{Strong Nash equilibrium (SNE) configuration of a block formation game}
 \usage{
-blockSNE(network, nodeNames, c, s, adjMatrix, setPS, setPower, approximate)
+blockSNE(edgeList, nodeList, c, s, adjMatrix, setPS, setPower, approximate)
 }
 \arguments{
-\item{network}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe within which all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe within which all nodes and their respective names are listed.}
 
 \item{c}{The cost of signalling to, and adding an, extra node to a block.}
 

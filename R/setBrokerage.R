@@ -1,8 +1,8 @@
 #' Brokerage of each node set within the network
 #'
 #' This function calculates the brokerage of each set of nodes within the network.
-#' @param network A dataframe of network data within which sources are in the first column and targets are in the second column.
-#' @param nodeNames A dataframe within which all nodes and their respective names are listed.
+#' @param edgeList A dataframe of network data within which sources are in the first column and targets are in the second column.
+#' @param nodeList A dataframe within which all nodes and their respective names are listed.
 #' @param s The maximum size of block that is considered within the block formation game.
 #' @param adjMatrix The network represented as an adjacency matrix.
 #' @param setPS The set of predeccessors and successors for each combination of nodes considered.
@@ -13,15 +13,15 @@
 #' @examples
 #' setBrokerage()
 
-setBrokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, approximate) {
+setBrokerage <- function(edgeList, nodeList, s, adjMatrix, setPS, perCapita, approximate) {
   if (missing(adjMatrix)) {
-    originalAdjMatrix <- adjMatrix <- adjacenyMatrix(network,
-                                                     nodeNames)
+    originalAdjMatrix <- adjMatrix <- adjacenyMatrix(edgeList,
+                                                     nodeList)
   } else {
     originalAdjMatrix <- adjMatrix
   }
   if (missing(s)) {
-    s <- nrow(nodeNames) - 2
+    s <- nrow(nodeList) - 2
   }
   if (missing(approximate)) {
     approximate <- FALSE
@@ -30,8 +30,8 @@ setBrokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, app
     perCapita <- FALSE
   }
   if (missing(setPS)) {
-    setPS <- setPredSucc(network,
-                         nodeNames,
+    setPS <- setPredSucc(edgeList,
+                         nodeList,
                          s = s,
                          adjMatrix,
                          approximate = approximate)
@@ -41,7 +41,7 @@ setBrokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, app
   for (i in 1:nrow(setPS)) {
     adjMatrix <- originalAdjMatrix
     K <- allSucc <- 0
-    for (j in 1:nrow(nodeNames)) {
+    for (j in 1:nrow(nodeList)) {
       if (!(length(setPS$successors[[j]]) == 0 || setPS$successors[[j]] == 0)) {
         if (!(j %in% setPS$set[[i]])) {
           inSet <- setPS$set[[i]] %in% setPS$successors[[j]]
@@ -65,7 +65,7 @@ setBrokerage <- function(network, nodeNames, s, adjMatrix, setPS, perCapita, app
     setPS$power[i] <- K - kappa - setPS$noSucc[[i]] - setPS$noPred[[i]]
     print(paste0("i = ", i))
   }
-  potBroker <- potentialBrokerage(network = network, nodeNames = nodeNames)
+  potBroker <- potentialBrokerage(edgeList = edgeList, nodeList = nodeList)
   setPS$power <- round(setPS$power/1,
                        digits = 3)
   if (perCapita == TRUE) {

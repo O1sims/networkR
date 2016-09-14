@@ -4,12 +4,12 @@
 \alias{undirectedAdjMatrix}
 \title{Coerce adjacency matrix to be undirected}
 \usage{
-undirectedAdjMatrix(network, nodeNames, adjMatrix)
+undirectedAdjMatrix(edgeList, nodeList, adjMatrix)
 }
 \arguments{
-\item{network}{A dataframe of network data where sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data where sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe where all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe where all nodes and their respective names are listed.}
 
 \item{adjMatrix}{The network represented as an adjacency matrix.}
 }

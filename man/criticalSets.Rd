@@ -4,12 +4,12 @@
 \alias{criticalSets}
 \title{Find all critical sets in a network}
 \usage{
-criticalSets(network, nodeNames, s, adjMatrix, setPS, setPower, approximate)
+criticalSets(edgeList, nodeList, s, adjMatrix, setPS, setPower, approximate)
 }
 \arguments{
-\item{network}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe within which all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe within which all nodes and their respective names are listed.}
 
 \item{s}{The maximum size of block that is considered within the block formation game.}
 

@@ -4,12 +4,12 @@
 \alias{predecessorsSuccessors}
 \title{Find the predecessors and successors of a node or node set}
 \usage{
-predecessorsSuccessors(network, nodeNames, adjMatrix)
+predecessorsSuccessors(edgeList, nodeList, adjMatrix)
 }
 \arguments{
-\item{network}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe within which all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe within which all nodes and their respective names are listed.}
 
 \item{adjMatrix}{The network represented as an adjacency matrix.}
 

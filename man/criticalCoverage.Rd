@@ -4,12 +4,12 @@
 \alias{criticalCoverage}
 \title{Per capita coverage of all critical sets}
 \usage{
-criticalCoverage(network, nodeNames, s, setPS, approximate)
+criticalCoverage(edgeList, nodeList, s, setPS, approximate)
 }
 \arguments{
-\item{network}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe within which all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe within which all nodes and their respective names are listed.}
 
 \item{s}{The maximum size of block that is considered within the block formation game.}
 

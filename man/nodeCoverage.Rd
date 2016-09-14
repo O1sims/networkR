@@ -4,12 +4,12 @@
 \alias{nodeCoverage}
 \title{Calculate the coverage of each node}
 \usage{
-nodeCoverage(network, nodeNames, s, adjMatrix, setPS, approximate)
+nodeCoverage(edgeList, nodeList, s, adjMatrix, setPS, approximate)
 }
 \arguments{
-\item{network}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe within which all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe within which all nodes and their respective names are listed.}
 
 \item{s}{The maximum size of block that is considered within the block formation game.}
 

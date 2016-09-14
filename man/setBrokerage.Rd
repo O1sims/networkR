@@ -4,12 +4,12 @@
 \alias{setBrokerage}
 \title{Brokerage of each node set within the network}
 \usage{
-setBrokerage(network, nodeNames, s, adjMatrix, setPS, perCapita, approximate)
+setBrokerage(edgeList, nodeList, s, adjMatrix, setPS, perCapita, approximate)
 }
 \arguments{
-\item{network}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe within which all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe within which all nodes and their respective names are listed.}
 
 \item{s}{The maximum size of block that is considered within the block formation game.}
 

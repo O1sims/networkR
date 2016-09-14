@@ -1,8 +1,8 @@
 #' Strong Nash equilibrium (SNE) configuration of a block formation game
 #'
 #' This function calculates the resulting SNE configuration of a block formation game along with the brokerage of the restulting sets.
-#' @param network A dataframe of network data within which sources are in the first column and targets are in the second column.
-#' @param nodeNames A dataframe within which all nodes and their respective names are listed.
+#' @param edgeList A dataframe of network data within which sources are in the first column and targets are in the second column.
+#' @param nodeList A dataframe within which all nodes and their respective names are listed.
 #' @param c The cost of signalling to, and adding an, extra node to a block.
 #' @param s The maximum size of block that is considered within the block formation game.
 #' @param adjMatrix The network represented as an adjacency matrix.
@@ -14,17 +14,17 @@
 #' @examples
 #' blockSNE()
 
-blockSNE <- function(network, nodeNames, c, s, adjMatrix, setPS, setPower, approximate) {
-  if (missing(s)) { s <- nrow(nodeNames) - 2 }
+blockSNE <- function(edgeList, nodeList, c, s, adjMatrix, setPS, setPower, approximate) {
+  if (missing(s)) { s <- nrow(nodeList) - 2 }
   if (missing(approximate)) { approximate <- FALSE }
   if (missing(setPower)) {
-    setPower <- blockPower(network,
-                           nodeNames,
-                           s,
-                           adjMatrix,
-                           setPS,
-                           perCapita = TRUE,
-                           approximate = approximate)
+    setPower <- setBrokerage(edgeList,
+                             nodeList,
+                             s = s,
+                             adjMatrix,
+                             setPS,
+                             perCapita = TRUE,
+                             approximate = approximate)
   }
   if (missing(c)) { c <- 0 }
   setPower$powerCapita <- setPower$powerCapita - (c * (setPower$setSize - 1))

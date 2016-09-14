@@ -4,14 +4,12 @@
 \alias{externalInfluence}
 \title{Calculate the external influence of affiliations}
 \usage{
-externalInfluence(hypergraph, nodeNames, affiliationNames, weight)
+externalInfluence(edgeList, affiliationList, weight)
 }
 \arguments{
-\item{hypergraph}{A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.}
+\item{edgeList}{A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.}
 
-\item{nodeNames}{A dataframe where all nodes and their respective names are listed.}
-
-\item{affiliationNames}{A dataframe where all affiliations and their respective names are listed.}
+\item{affiliationList}{A dataframe where all affiliations and their respective names are listed.}
 
 \item{weight}{The weight or value of an affiliation.}
 }

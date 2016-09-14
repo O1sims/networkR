@@ -4,12 +4,12 @@
 \alias{degreeDistribution}
 \title{Plot degree distribution}
 \usage{
-degreeDistribution(network, nodeNames)
+degreeDistribution(edgeList, nodeList)
 }
 \arguments{
-\item{network}{A dataframe of network data where sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data where sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe where all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe where all nodes and their respective names are listed.}
 }
 \description{
 This function plots the degree distribution of a network. Depends on `ggplot2`.

@@ -4,13 +4,13 @@
 \alias{nodeNormCriticality}
 \title{Calculate the normalised criticality of each node}
 \usage{
-nodeNormCriticality(network, nodeNames, c, s, adjMatrix, setPS, setPower,
+nodeNormCriticality(edgeList, nodeList, c, s, adjMatrix, setPS, setPower,
   approximate)
 }
 \arguments{
-\item{network}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe within which all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe within which all nodes and their respective names are listed.}
 
 \item{c}{The cost of signalling to, and adding an, extra node to a block.}
 

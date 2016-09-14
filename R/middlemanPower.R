@@ -1,23 +1,23 @@
-#' Calculate Middleman power
+#' Calculate Middleman power for all nodes
 #'
 #' A function that calculates the middleman power of each node in a network.
-#' @param network A dataframe of network data where sources are in the first column and targets are in the second column.
-#' @param nodeNames A dataframe where all nodes and their respective names are listed.
+#' @param edgeList A dataframe of network data where sources are in the first column and targets are in the second column.
+#' @param nodeList A dataframe where all nodes and their respective names are listed.
 #' @param adjMatrix The network represented as an adjacency matrix.
 #' @keywords brokerage middleman
 #' @export
 #' @examples
 #' middlemanPower()
 
-middlemanPower <- function(network, nodeNames, adjMatrix, normalised) {
+middlemanPower <- function(edgeList, nodeList, adjMatrix, normalised) {
   if (missing(adjMatrix)) {
-    originalAdjMatrix <- adjMatrix <- adjacenyMatrix(network, nodeNames)
+    originalAdjMatrix <- adjMatrix <- adjacenyMatrix(edgeList, nodeList)
   } else {
     originalAdjMatrix <- adjMatrix
   }
   if (missing(normalised)) { normalised <- FALSE }
-  PS <- predecessorsSuccessors(network = network,
-                               nodeNames = nodeNames,
+  PS <- predecessorsSuccessors(edgeList = edgeList,
+                               nodeList = nodeList,
                                adjMatrix = adjMatrix)
   K <- connectivity(adjMatrix = originalAdjMatrix)
   power <- 0
@@ -28,8 +28,8 @@ middlemanPower <- function(network, nodeNames, adjMatrix, normalised) {
     power[i] <- K - kappa - PS$noPred[i] - PS$noSucc[i]
   }
   if (normalised == TRUE) {
-    potBroker <- potentialBrokerage(network,
-                                    nodeNames,
+    potBroker <- potentialBrokerage(edgeList = edgeList,
+                                    nodeList = nodeList,
                                     adjMatrix = originalAdjMatrix)
     power <- round(power/as.integer(potBroker),
                    digits = 3)

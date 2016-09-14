@@ -2,16 +2,16 @@
 % Please edit documentation in R/middlemanPowerDetail.R
 \name{middlemanPowerDetail}
 \alias{middlemanPowerDetail}
-\title{Provide detailed results of middleman power}
+\title{Provide detailed results of middleman power fo all nodes}
 \usage{
-middlemanPowerDetail(network, nodeNames, adjMatrix)
+middlemanPowerDetail(edgeList, nodeList, adjMatrix)
 }
 \arguments{
-\item{network}{A dataframe of network data where sources are in the first column and targets are in the second column.}
-
-\item{nodeNames}{A dataframe where all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe where all nodes and their respective names are listed.}
 
 \item{adjMatrix}{The network represented as an adjacency matrix.}
+
+\item{network}{A dataframe of network data where sources are in the first column and targets are in the second column.}
 }
 \description{
 A function that returns detailed reults on each nodes middleman power in the network.

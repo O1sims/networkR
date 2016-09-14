@@ -2,12 +2,12 @@
 % Please edit documentation in R/filterNetwork.R
 \name{filterNetwork}
 \alias{filterNetwork}
-\title{Filter network}
+\title{Filter a networks edges}
 \usage{
-filterNetwork(network)
+filterNetwork(edgeList)
 }
 \arguments{
-\item{network}{A dataframe of network data where sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data where sources are in the first column and targets are in the second column.}
 }
 \description{
 This function filters a network such that it removes any duplicated connections, or more specifically arcs, between a pair of nodes.

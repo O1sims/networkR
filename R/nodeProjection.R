@@ -1,21 +1,21 @@
 #' Represent a hypergraph as a network of nodes only
 #'
 #' This function projects a hypergraph into a network of nodes only.
-#' @param hypergraph A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.
+#' @param edgeList A dataframe of network data where nodes are in the first column and affiliations are in the second column. Nodes are members of the affiliation that they are next to.
 #' @keywords node projection
 #' @export
 #' @examples
 #' nodeProjection
 
-nodeProjection <- function(hypergraph) {
+nodeProjection <- function(edgeList) {
   nodeNetwork <- data.frame(sources = 0,
                             targets = 0)
-  activeAffiliations <- unique(hypergraph[, 2])
+  activeAffiliations <- unique(edgeList[, 2])
 
   if (length(activeAffiliations) > 0) {
     for (i in 1:length(activeAffiliations)) {
-      affiliationSet <- subset(hypergraph[, 1],
-                               hypergraph[, 2] == activeAffiliations[i])
+      affiliationSet <- subset(edgeList[, 1],
+                               edgeList[, 2] == activeAffiliations[i])
       connections <- data.frame(t(combn(affiliationSet,
                                         m = 2)))
       colnames(connections) <- c("sources",

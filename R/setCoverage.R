@@ -1,8 +1,8 @@
 #' Calculate the coverage of all sets of nodes
 #'
 #' This function calculates the coverage, i.e., the number of indirect connections that the node set faciliates, for each set of nodes in the network.
-#' @param network A dataframe of network data within which sources are in the first column and targets are in the second column.
-#' @param nodeNames A dataframe within which all nodes and their respective names are listed.
+#' @param edgeList A dataframe of network data within which sources are in the first column and targets are in the second column.
+#' @param nodeList A dataframe within which all nodes and their respective names are listed.
 #' @param s The maximum size of block that is considered within the block formation game.
 #' @param adjMatrix The network represented as an adjacency matrix.
 #' @param setPS The set of predeccessors and successors for each combination of nodes considered.
@@ -10,20 +10,20 @@
 #' @keywords coverage
 #' @export
 #' @examples
-#' coverage()
+#' setCoverage()
 
-coverage <- function(network, nodeNames, s, adjMatrix, setPS, approximate) {
-  if (missing(s)) { s <- nrow(nodeNames) - 2 }
+setCoverage <- function(edgeList, nodeList, s, adjMatrix, setPS, approximate) {
+  if (missing(s)) { s <- nrow(nodeList) - 2 }
   if (missing(approximate)) { approximate <- FALSE }
   if (missing(adjMatrix)) {
-    originalAdjMatrix <- adjMatrix <- adjacenyMatrix(network,
-                                                     nodeNames)
+    originalAdjMatrix <- adjMatrix <- adjacenyMatrix(edgeList,
+                                                     nodeList)
   } else {
     originalAdjMatrix <- adjMatrix
   }
-  if (missing(setPS)) { setPS <- setPredSucc(network, nodeNames, s, adjMatrix, approximate = approximate) }
-  ps <- setPredSucc(network,
-                    nodeNames,
+  if (missing(setPS)) { setPS <- setPredSucc(edgeList, nodeList, s, adjMatrix, approximate = approximate) }
+  ps <- setPredSucc(edgeList,
+                    nodeList,
                     s = 1)
   coverage <- 0
   for (i in 1:nrow(setPS)) {

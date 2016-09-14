@@ -2,14 +2,14 @@
 % Please edit documentation in R/middlemanPower.R
 \name{middlemanPower}
 \alias{middlemanPower}
-\title{Calculate Middleman power}
+\title{Calculate Middleman power for all nodes}
 \usage{
-middlemanPower(network, nodeNames, adjMatrix, normalised)
+middlemanPower(edgeList, nodeList, adjMatrix, normalised)
 }
 \arguments{
-\item{network}{A dataframe of network data where sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data where sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe where all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe where all nodes and their respective names are listed.}
 
 \item{adjMatrix}{The network represented as an adjacency matrix.}
 }

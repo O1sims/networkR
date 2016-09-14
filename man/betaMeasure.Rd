@@ -2,17 +2,17 @@
 % Please edit documentation in R/betaMeasure.R
 \name{betaMeasure}
 \alias{betaMeasure}
-\title{Generalised $\beta$-measure (Gilles and van den Brink, 2000) applied to each node}
+\title{Generalised beta-measure (Gilles and van den Brink, 2000) applied to each node}
 \usage{
-betaMeasure(network, nodeNames)
+betaMeasure(edgeList, nodeList)
 }
 \arguments{
-\item{network}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
+\item{edgeList}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
 
-\item{nodeNames}{A dataframe within which all nodes and their respective names are listed.}
+\item{nodeList}{A dataframe within which all nodes and their respective names are listed.}
 }
 \description{
-This function calculates the generalised $\beta$-measure, or dominance, of each node as discussed in Gilles and ven den Brink (2000). This will also consider a weighted network.
+This function calculates the generalised beta-measure, or dominance, of each node as discussed in Gilles and ven den Brink (2000). This will also consider a weighted network.
 }
 \examples{
 betaMeasure()

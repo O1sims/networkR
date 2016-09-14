@@ -1,8 +1,8 @@
 #' Find the predecessors and successors of a node or node set
 #'
 #' This function calculates the predecessors and successors of a node or node set.
-#' @param network A dataframe of network data within which sources are in the first column and targets are in the second column.
-#' @param nodeNames A dataframe within which all nodes and their respective names are listed.
+#' @param edgeList A dataframe of network data within which sources are in the first column and targets are in the second column.
+#' @param nodeList A dataframe within which all nodes and their respective names are listed.
 #' @param s The maximum size of block that is considered within the block formation game.
 #' @param adjMatrix The network represented as an adjacency matrix.
 #' @param approximate Should the number of sets considered be truncated? TRUE or FALSE.
@@ -11,9 +11,9 @@
 #' @examples
 #' predecessorsSuccessors()
 
-predecessorsSuccessors <- function(network, nodeNames, adjMatrix) {
+predecessorsSuccessors <- function(edgeList, nodeList, adjMatrix) {
   if (missing(adjMatrix)) {
-    adjMatrix <- adjacenyMatrix(network, nodeNames)
+    adjMatrix <- adjacenyMatrix(edgeList, nodeList)
   }
   adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")
   for (i in 1:nrow(adjMatrix)) {
@@ -28,23 +28,23 @@ predecessorsSuccessors <- function(network, nodeNames, adjMatrix) {
     noSuccessors[i] <- length(which(adjMatrix[i, ] == 1))
     noPredecessors[i] <- length(which(adjMatrix[, i] == 1))
   }
-  adjMatrix <- adjacenyMatrix(network, nodeNames)
+  adjMatrix <- adjacenyMatrix(edgeList, nodeList)
   noPredecessorsSuccessors <- data.frame(nodeNumber = seq(1, nrow(adjMatrix)),
-                                         nodeName = nodeNames[, 2],
+                                         nodeName = nodeList[, 2],
                                          noPred = noPredecessors,
                                          noSucc = noSuccessors)
   return(noPredecessorsSuccessors)
 }
 
-setPredSucc <- function(network, nodeNames, s, adjMatrix, approximate) {
-  if (missing(s)) { s <- nrow(nodeNames) - 2 }
-  if (s > nrow(nodeNames) - 2) {
-    return(print("s must be less than or equal to number of nodes in network minus 2 [s <= nrow(nodeNames) - 2]"))
+setPredSucc <- function(edgeList, nodeList, s, adjMatrix, approximate) {
+  if (missing(s)) { s <- nrow(nodeList) - 2 }
+  if (s > nrow(nodeList) - 2) {
+    return(print("s must be less than or equal to number of nodes in network minus 2 [s <= nrow(nodeList) - 2]"))
   }
   if (missing(approximate)) { approximate <- FALSE }
   if (missing(adjMatrix)) {
-    adjMatrix <- adjacenyMatrix(network,
-                                nodeNames)
+    adjMatrix <- adjacenyMatrix(edgeList,
+                                nodeList)
   }
   adjMatrix[, ] <- !adjMatrix %in% c("0", "FALSE")
   for (i in 1:nrow(adjMatrix)) {
