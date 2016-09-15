@@ -19,14 +19,14 @@ nodeCoverage <- function(edgeList, nodeList, s, adjMatrix, setPS, approximate) {
                               nodeList,
                               s = s,
                               approximate = approximate)
-  normaliser <- sum(coverage$criticalCoverage)
+  normaliser <- sum(coverage$coverageMeasure)
   nodeNormCoverage <- 0
   for (i in 1:nrow(nodeList)) {
     r <- coverage
     t <- sapply(1:nrow(r), function(x) i %in% r$set[[x]])
     r <- r[t, ]
     if (nrow(r) > 0) {
-      nodeNormCoverage[i] <- sum(r$criticalCoverage)
+      nodeNormCoverage[i] <- sum(r$coverageMeasure)
     } else {
       nodeNormCoverage[i] <- 0
     }

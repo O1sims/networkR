@@ -14,7 +14,7 @@ No versions have been officially released yet. Currently we are still beta testi
 
 ### 1.2 Installation
 
-There is no CRAN version available. Consider the following installation instructions for `devtools`.
+There is no CRAN version available yet. Instead, consider the following installation instructions for `devtools`.
 
     # install.packages("devtools")
     library(devtools)
@@ -39,11 +39,13 @@ The package provides four empirical network and hypergraph datasets.
 
   * **Advice data:** `managerNodes.rda` and `managerEdges.rda`.
 
+![](data/images/adviceNetwork.png "Managerial advice network")
     
 **9/11 terrorists:** The third dataset refers to four different networks that show the evolution of the interactions between terrorists that coordinated and instigated the 9/11 terrorists attacks. These networks span from December 1999 to August 2001, just before the attack. The size of the network increases over time from 27 terrorists in December 1999 to 32 terrorists in August 2001. The network also becomes more concentrated over time. These networks have been constructed from a number of different sources within academic literature, government reports and journalist articles. 
 
   * **Terrorist data:** `terroristNodes.rda` and `terroristEdges.rda`.
 
+![](data/images/terroristNetwork.png "9/11 terrorist network in December 2000")
 
 **Directors of New York City:** The final dataset refers to a hypergraph representing the directorate of New York City in 1902. We provide a bipartite network of all railways, insurance, and financial institutions as well as their directors. The purpose of this data is to illustrate the control of directors and firms in New York during this time. This network contains over 250 unique firms and 3000 unique directors. There are 4299 links; each link indicates membership of a director to a firm. Since the number of links is greater than the number of unique directors it is certain that overlapping directorate exists. This network has been constructed from historical *New York Times* articles and the *Directory of Directors of New York City*. Other sources are used to acquire data on the valuation of each of the firms. 
 
@@ -60,13 +62,13 @@ Consider the directed network in `network1Nodes.rda` and `network1Edges.rda`. Th
 Let's look at a number of `networkR` functions applied to the first test network (`network1Nodes.rda` and `network1Edges.rda`). Load these files up.
 
     > library(networkR)
-    > data(list = c("test1Nodes", "test1Edges")) 
+    > data(list = c("network1Nodes", "network1Edges")) 
 
 ### 3.1 Middlemen and middleman power
 
 It is pretty obvious from reviewing this network that nodes 2, 5, and 6 are all middlemen. Furthermore, it is noticeable that node 6 would still remain a middleman regardless of whether the network were transformed into its undirected state. We get the following values when running the `middlemanPowerDetail()` function.
 
-	> middlemanPowerDetail(network, N)
+	> middlemanPowerDetail(network1Edges, network1Nodes)
 	number name power normPower        		type
 		 1    1     0       0.0    Non-middleman
 		 2    2     1       0.1   Weak middleman
@@ -78,10 +80,10 @@ It is pretty obvious from reviewing this network that nodes 2, 5, and 6 are all 
 
 As hypothesised we find that nodes 2 and 5 are both weak middlemen and node 6 is a strong middleman. To add to this we also find : (a) the number of relationships brokered by all middleman, and (b) the normalised middleman power for each node. We can represent middlemen visually with the following R commands:
 
-	> colourMiddlemen <- middlemanPowerDetail(network, N)
+	> colourMiddlemen <- middlemanPowerDetail(network1Edges, network1Nodes)
 	> colourMiddlemen$colour <- ifelse(colourMiddlemen$power > 0, "darkred", "lightblue")
-	> isTrue <- isUndirected(network, N) == FALSE
-	> plot(graph_from_data_frame(network, 
+	> isTrue <- isUndirected(network1Edges, network1Nodes) == FALSE
+	> plot(graph_from_data_frame(network1Edges, 
 								 directed = isTrue), 
 		   vertex.color = middle$colour, 
 		   vertex.label.dist = 3, 
@@ -96,7 +98,7 @@ In this case, the network is plotted such that middlemen are coloured in red and
 
 The coverage of each node set in the 7 node network is given by:
 
-	> coverage(network, N)
+	> setCoverage(network1Edges, network1Nodes)
 			 set setSize  successors predecessors noSucc noPred coverage
 	1:         1       1 2,3,4,5,6,7            0      6      0        0
 	2:         2       1     4,5,6,7            1      4      1        4
@@ -112,7 +114,7 @@ The coverage of each node set in the 7 node network is given by:
 
 The brokerage, or middleman power, of each node set can be derived in much the same way. This is done by executing the `setBrokerage()` function. We arrive at the following output:
 
-	> setBrokerage(network, N)
+	> setBrokerage(network1Edges, network1Nodes)
 			 set setSize  successors predecessors noSucc noPred power
 	1:         1       1 2,3,4,5,6,7            0      6      0     0
 	2:         2       1     4,5,6,7            1      4      1     1
@@ -128,7 +130,7 @@ The brokerage, or middleman power, of each node set can be derived in much the s
 
 We can see that a positive coverage does not translate to a positive middleman power. More specifically, the middleman power of a node set is defined on the critical sets of the network. All critical sets are provided with the function `criticalSets()`. The output for the 7 node network is as below:
 
-	> criticalSets(network, N)
+	> criticalSets(network1Edges, network1Nodes)
 			 set setSize successors predecessors noSucc noPred power powerCapita
 	1:         2       1    4,5,6,7            1      4      1     1       1.000
 	2:         5       1        6,7        1,2,3      2      3     2       2.000
@@ -150,7 +152,7 @@ The criticality of individual or sets of nodes is a measure of their assumed bro
 
 For example, when considering the network of 7 nodes when there exists no costs in forming blocks we can determine the SNE as follows:
 
-	> blockSNE(network, N)
+	> blockSNE(network1Edges, network1Nodes)
 	   set setSize successors predecessors noSucc noPred power powerCapita
 	1:   6       1          7    1,2,3,4,5      1      5     5           5
 	2: 4,5       2        6,7        1,2,3      2      3     6           3
@@ -158,7 +160,7 @@ For example, when considering the network of 7 nodes when there exists no costs 
 
 Specifically, node 6 remains as a middleman and two blocks are formed: one containing nodes 4 and 5, and another containing nodes 2 and 3. All other nodes do not form a block and therefore earn a payoff of zero. If, however, there is some substantial cost of forming a block, then the SNE degredates to the point where no blocks are formed and middlemen are the only nodes that earn a positive payoff. By setting `c = 2` we get the following Strong Nash equilibrium:
 
-	> blockSNE(network, N, c = 2)
+	> blockSNE(network1Edges, network1Nodes, c = 2)
 	   set setSize successors predecessors noSucc noPred power powerCapita
 	1:   6       1          7    1,2,3,4,5      1      5     5           5
 	2:   5       1        6,7        1,2,3      2      3     2           2
@@ -166,7 +168,7 @@ Specifically, node 6 remains as a middleman and two blocks are formed: one conta
 
 The criticality of individual nodes can be calculated from all potential SNE blocks that are known the emerge. Simply, the criticality of all nodes in the network is calculated as:
 
-	> nodeNormCriticality(network, N)
+	> nodeNormCriticality(network1Edges, network1Nodes)
 	[1] 0.0 0.2 0.2 0.3 0.3 0.5 0.0
 
 ## 4 Analysing hypergraphs
@@ -175,16 +177,17 @@ A set of functions for analysing hypergraphs is also provided. These functions r
 
     > data(list = c("nycNodes", "nycAffiliations", "nycHypergraph"))
     > projection <- filterNetwork(affiliationProjection(hypergraph))
+    > projection <- filterNetwork(affiliationProjection(nycHypergraph))
     > plot(graph_from_data_frame(projection,
-                           directed = FALSE),
-          vertex.color = affiliationList$types,
-          vertex.label = NA,
-          vertex.label.dist = 3,
-          vertex.label.color = "black",
-          vertex.size = log(affiliationList$valuations)/5,
-          edge.width = projection$weight,
-          edge.color = "grey50",
-          edge.arrow.size = 0)
+                                 directed = FALSE),
+            vertex.color = nycAffiliations$types,
+            vertex.label = NA,
+            vertex.label.dist = 3,
+            vertex.label.color = "black",
+            vertex.size = log(nycAffiliations$valuations)/5,
+            edge.width = projection$weight,
+            edge.color = "grey50",
+            edge.arrow.size = 0)
 
 ![](data/images/weightedInstitutions.png "Overlapping directorate network of NYC")
 
@@ -198,18 +201,18 @@ For example, when analysing director networks each firm exists within one indust
 
     > data(list = c("nycNodes", "nycAffiliations", "nycHypergraph"))
     > elites(nycHypergraph, nycNodes, nycAffiliations, nycAffiliations$types)
-         number                nodes
-      1:       212        JAMES H. HYDE
+           number                nodes
+      1:      212        JAMES H. HYDE
       2:      220        E.H. HARRIMAN
       3:      240    SAMUEL D. BABCOCK
       4:      268      GEORGE F. BAKER
       5:      272     JOHN JACOB ASTOR
       ---
-      31:   1886      GEORGE J. GOULD
-      32:   1956         BRAYTON IVES
-      33:   2131      STUYVESANT FISH
-      34:   2679 N. PARKER SHORTRIDGE
-      35:   2907      JACOB H. SCHIFF
+      31:    1886      GEORGE J. GOULD
+      32:    1956         BRAYTON IVES
+      33:    2131      STUYVESANT FISH
+      34:    2679 N. PARKER SHORTRIDGE
+      35:    2907      JACOB H. SCHIFF
 
 All directors listed were seen as influential during this time period.
 

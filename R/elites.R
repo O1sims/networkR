@@ -14,7 +14,7 @@
 elites <- function(edgeList, nodeList, affiliationList, typeList, e) {
   if (missing(e)) { e <- length(unique(typeList)) }
   if (e > length(unique(typeList))) {
-    stop("e must be less than or equal to the number of aspects in the hypergraph.")
+    return(print("e must be less than or equal to the number of aspects in the hypergraph."))
   }
   presence <- 0
   for (i in 1:nrow(nodeList)) {
