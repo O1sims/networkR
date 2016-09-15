@@ -1,3 +1,5 @@
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+
 # `networkR` : An `R` package for analysing social and economic networks
 
 ## 1 About `networkR`
