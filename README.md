@@ -176,7 +176,6 @@ The criticality of individual nodes can be calculated from all potential SNE blo
 A set of functions for analysing hypergraphs is also provided. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a nodes' or an affiiations' "control" within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. Using the NYC Director data we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
 
     > data(list = c("nycNodes", "nycAffiliations", "nycHypergraph"))
-    > projection <- filterNetwork(affiliationProjection(hypergraph))
     > projection <- filterNetwork(affiliationProjection(nycHypergraph))
     > plot(graph_from_data_frame(projection,
                                  directed = FALSE),
