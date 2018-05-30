@@ -18,7 +18,7 @@ There is no CRAN version available yet. Instead, consider the following installa
 
     # install.packages("devtools")
     library(devtools)
-    devtools::install_github("OwenSims/networkR")
+    devtools::install_github("O1sims/networkR")
 
 ## 2 Data
 
