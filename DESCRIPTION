@@ -5,7 +5,7 @@ Authors@R: person("Owen", "Sims", email = "sims.owen@gmail.com", role = c("aut",
 Maintainer: Owen Sims <sims.owen@gmail.com>
 Description: This package provides a number of functions to analyse the
     structure and statistics of networks and hypergraphs.
-URL: https://github.com/OwenSims/networkR
+URL: https://github.com/O1sims/networkR
 BugReports: URL: https://github.com/OwenSims/networkR/issues
 License: MIT
 Suggests:
