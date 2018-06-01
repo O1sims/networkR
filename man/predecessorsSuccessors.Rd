@@ -22,4 +22,3 @@ predecessorsSuccessors()
 \keyword{node}
 \keyword{predecessors}
 \keyword{successors}
-

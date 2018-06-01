@@ -27,4 +27,3 @@ nodeCoverage()
 }
 \keyword{coverage}
 \keyword{node}
-

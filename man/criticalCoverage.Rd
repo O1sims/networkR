@@ -24,4 +24,3 @@ This function calculates per capita coverage of all critical sets in the network
 criticalCoverage()
 }
 \keyword{coverage}
-

@@ -24,4 +24,3 @@ The function calculates the influence of nodes and affiliations within a hypergr
 nodeInfluence()
 }
 \keyword{influence}
-

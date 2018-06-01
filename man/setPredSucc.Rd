@@ -26,4 +26,3 @@ setPredSucc()
 \keyword{node}
 \keyword{predecessors}
 \keyword{successors}
-

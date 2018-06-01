@@ -20,4 +20,3 @@ A function that queries whether some network data is undirected and returns a TR
 isUndirected()
 }
 \keyword{undirected}
-

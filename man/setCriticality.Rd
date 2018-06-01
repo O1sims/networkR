@@ -29,4 +29,3 @@ This function calculates the criticality of all node sets that remain in all res
 setCriticality()
 }
 \keyword{criticality}
-
