@@ -18,4 +18,3 @@ Robustness of a middleman measured by the number of arcs that need to be removed
 robustness()
 }
 \keyword{robustness}
-

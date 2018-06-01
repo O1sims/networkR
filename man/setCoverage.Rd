@@ -26,4 +26,3 @@ This function calculates the coverage, i.e., the number of indirect connections 
 setCoverage()
 }
 \keyword{coverage}
-

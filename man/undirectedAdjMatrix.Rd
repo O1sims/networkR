@@ -20,4 +20,3 @@ A function that coerces an adjacency matrix to become undirected.
 undirectedAdjMatrix()
 }
 \keyword{undirected}
-

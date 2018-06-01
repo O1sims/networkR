@@ -30,4 +30,3 @@ This function calculates the resulting SNE configuration of a block formation ga
 blockSNE()
 }
 \keyword{brokerage}
-

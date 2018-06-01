@@ -24,4 +24,3 @@ This function lists all elites nodes in a hypergraph determined by some criteria
 elites()
 }
 \keyword{elite}
-

@@ -28,4 +28,3 @@ This function calculates the brokerage of each set of nodes within the network.
 setBrokerage()
 }
 \keyword{brokerage}
-

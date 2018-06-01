@@ -29,4 +29,3 @@ This function calculates the criticality of each node in the network. Node criti
 nodeCriticality()
 }
 \keyword{criticality}
-

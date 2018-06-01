@@ -18,4 +18,3 @@ This function calculates the generalised beta-measure, or dominance, of each nod
 betaMeasure()
 }
 \keyword{beta-measure}
-

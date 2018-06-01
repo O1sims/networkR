@@ -20,4 +20,3 @@ This function calculates the connectivity of a network by summing the number of 
 connectivity()
 }
 \keyword{connectivity}
-

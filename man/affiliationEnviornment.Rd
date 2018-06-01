@@ -19,4 +19,3 @@ affiliationEnviornment()
 }
 \keyword{affiliation}
 \keyword{environment}
-

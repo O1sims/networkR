@@ -19,4 +19,3 @@ adjacencyDF()
 }
 \keyword{adjacency}
 \keyword{matrix}
-

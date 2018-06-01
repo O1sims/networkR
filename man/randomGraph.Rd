@@ -22,4 +22,3 @@ randomGraph()
 \keyword{graph}
 \keyword{network}
 \keyword{random}
-
