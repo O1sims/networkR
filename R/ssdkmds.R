@@ -56,3 +56,23 @@ save(vbdAffiliations,
      file = paste0(dataPath, "vbdAffiliations.rda"))
 
 
+
+
+library(networkR)
+data(list = c("vbdNodes", "vbdAffiliations", "vbdHypergraph"))
+
+projection <- vbdHypergraph %>%
+  affiliationProjection() %>%
+  filterNetwork()
+
+plot(graph_from_data_frame(
+  projection,
+  directed = FALSE),
+  vertex.label = NA,
+  vertex.label.dist = 3,
+  vertex.label.color = "black",
+  vertex.size = 2,
+  edge.width = projection$weight,
+  edge.color = "grey50",
+  edge.arrow.size = 0)
+
