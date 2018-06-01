@@ -173,7 +173,9 @@ The criticality of individual nodes can be calculated from all potential SNE blo
 
 ## 4 Analysing hypergraphs
 
-A set of functions for analysing hypergraphs is also provided. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a nodes' or an affiiations' "control" within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. Using the NYC Director data we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
+A set of functions for analysing hypergraphs is also provided. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a nodes' or an affiiations' "control" within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. 
+
+**NYC corporate directors:** Using the NYC Directorate data we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
 
     > data(list = c("nycNodes", "nycAffiliations", "nycHypergraph"))
     > projection <- filterNetwork(affiliationProjection(nycHypergraph))
@@ -189,6 +191,27 @@ A set of functions for analysing hypergraphs is also provided. These functions r
             edge.arrow.size = 0)
 
 ![](data/images/weightedInstitutions.png "Overlapping directorate network of NYC")
+
+**Victorian Britain directors:** The Victorian Britain directorate data can also be used in much the same way. See the code below:
+```
+> data(list = c("vbdNodes", "vbdAffiliations", "vbdHypergraph"))
+> projection <- vbdHypergraph %>%
+    affiliationProjection() %>%
+    filterNetwork()
+> plot(graph_from_data_frame(
+    projection,
+    directed = FALSE),
+    vertex.label = NA,
+    vertex.label.dist = 3,
+    vertex.label.color = "black",
+    vertex.size = 2,
+    edge.width = projection$weight,
+    edge.color = "grey50",
+    edge.arrow.size = 0)
+```
+This generates the following institutional overlap.
+
+![](data/images/victorian-britain-institutions.png "Overlapping directorate of Victorian Britain firms")
 
 It is important to understand the structure of the hypergraph data that needs to be passed to the functions. Data is structured such that a bipartite network is expressed: `nodes` are connected to `affiliations` by an edge, however a set of nodes nor a set of affiliations are connected to each other directly.
 
