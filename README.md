@@ -242,18 +242,20 @@ All directors listed were seen as influential during this time period.
 
 A number of other functions are defined in `networkFunctions.R`. For example, the `randomGraph()` function provides an Erdos-Renyi graph where the probability of an arc or link existing between any two nodes is explicitly defined within the argument `0 < p < 1`.
 
-	> erdosRenyi <- randomGraph(n = 50, 
-								p = 0.05)
-	> plot(graph_from_data_frame(erdosRenyi,
-		                         directed = FALSE),
-		   vertex.color = "orange",
-		   vertex.label = NA,
-		   vertex.label.dist = 3,
-		   vertex.size = 5,
-		   edge.color = "gray50",
-		   edge.arrow.size = 0)
+	> erdosRenyi <- randomGraph(
+	    n = 50,
+	    p = 0.05)
+	> plot(graph_from_data_frame(
+	    erdosRenyi,
+      directed = FALSE),
+		  vertex.color = "orange",
+		  vertex.label = NA,
+		  vertex.label.dist = 3,
+		  vertex.size = 5,
+		  edge.color = "gray50",
+		  edge.arrow.size = 0)
 
 
-This provides the following graph
+This generates the following graph:
 
 ![](images/erdosRenyi50.png "Random graph of 50 nodes with p = 0.05")

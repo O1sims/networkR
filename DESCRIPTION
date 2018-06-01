@@ -13,6 +13,8 @@ Suggests:
 Depends:
     R (>= 3.0.0)
 Imports:
+    gtools,
+    magrittr,
     ggplot2,
     expm,
     data.table,
