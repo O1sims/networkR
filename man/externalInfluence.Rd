@@ -20,4 +20,3 @@ This function calculates the external influence of affiliations within a hypergr
 externalInfluence()
 }
 \keyword{influence}
-

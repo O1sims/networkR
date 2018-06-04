@@ -32,20 +32,20 @@ The package provides four empirical network and hypergraph datasets.
 
   * **Marriage Data:** `florentineNodes.rda` and `florentineEdges.rda`.
 
-![](data/images/marriageTopology.png "Elite Florentine marriages")
+![](images/marriageTopology.png "Elite Florentine marriages")
 
 
 **Manager advice:** The second network dataset is the manager advice network gathered by David Krackhardt (1987). This directed network contains 21 managers from 4 different levels of management and also contains 129 arcs between the managers. 
 
   * **Advice data:** `managerNodes.rda` and `managerEdges.rda`.
 
-![](data/images/adviceNetwork.png "Managerial advice network")
+![](images/adviceNetwork.png "Managerial advice network")
     
 **9/11 terrorists:** The third dataset refers to four different networks that show the evolution of the interactions between terrorists that coordinated and instigated the 9/11 terrorists attacks. These networks span from December 1999 to August 2001, just before the attack. The size of the network increases over time from 27 terrorists in December 1999 to 32 terrorists in August 2001. The network also becomes more concentrated over time. These networks have been constructed from a number of different sources within academic literature, government reports and journalist articles. 
 
   * **Terrorist data:** `terroristNodes.rda` and `terroristEdges.rda`.
 
-![](data/images/terroristNetwork.png "9/11 terrorist network in December 2000")
+![](images/terroristNetwork.png "9/11 terrorist network in December 2000")
 
 **Directors of New York City:** The final dataset refers to a hypergraph representing the directorate of New York City in 1902. We provide a bipartite network of all railways, insurance, and financial institutions as well as their directors. The purpose of this data is to illustrate the control of directors and firms in New York during this time. This network contains over 250 unique firms and 3000 unique directors. There are 4299 links; each link indicates membership of a director to a firm. Since the number of links is greater than the number of unique directors it is certain that overlapping directorate exists. This network has been constructed from historical *New York Times* articles and the *Directory of Directors of New York City*. Other sources are used to acquire data on the valuation of each of the firms. 
 
@@ -92,7 +92,7 @@ As hypothesised we find that nodes 2 and 5 are both weak middlemen and node 6 is
 
 In this case, the network is plotted such that middlemen are coloured in red and non-middlemen are coloured in blue. This is seen in the Figure below.
 
-![](data/images/middlemen.png "Highlighted middlemen")
+![](images/middlemen.png "Highlighted middlemen")
 
 ### 3.2 Coverage, blocks and set middleman power
 
@@ -173,7 +173,9 @@ The criticality of individual nodes can be calculated from all potential SNE blo
 
 ## 4 Analysing hypergraphs
 
-A set of functions for analysing hypergraphs is also provided. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a nodes' or an affiiations' "control" within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. Using the NYC Director data we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
+A set of functions for analysing hypergraphs is also provided. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a nodes' or an affiiations' "control" within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. 
+
+**NYC corporate directors:** Using the NYC Directorate data we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
 
     > data(list = c("nycNodes", "nycAffiliations", "nycHypergraph"))
     > projection <- filterNetwork(affiliationProjection(nycHypergraph))
@@ -188,7 +190,28 @@ A set of functions for analysing hypergraphs is also provided. These functions r
             edge.color = "grey50",
             edge.arrow.size = 0)
 
-![](data/images/weightedInstitutions.png "Overlapping directorate network of NYC")
+![](images/weightedInstitutions.png "Overlapping directorate network of NYC")
+
+**Victorian Britain directors:** The Victorian Britain directorate data can also be used in much the same way. See the code below:
+```
+> data(list = c("vbdNodes", "vbdAffiliations", "vbdHypergraph"))
+> projection <- vbdHypergraph %>%
+    affiliationProjection() %>%
+    filterNetwork()
+> plot(graph_from_data_frame(
+    projection,
+    directed = FALSE),
+    vertex.label = NA,
+    vertex.label.dist = 3,
+    vertex.label.color = "black",
+    vertex.size = 2,
+    edge.width = projection$weight,
+    edge.color = "grey50",
+    edge.arrow.size = 0)
+```
+This generates the following institutional overlap.
+
+![](images/victorian-britain-institutions.png "Overlapping directorate of firms in Victorian Britain")
 
 It is important to understand the structure of the hypergraph data that needs to be passed to the functions. Data is structured such that a bipartite network is expressed: `nodes` are connected to `affiliations` by an edge, however a set of nodes nor a set of affiliations are connected to each other directly.
 
@@ -219,18 +242,20 @@ All directors listed were seen as influential during this time period.
 
 A number of other functions are defined in `networkFunctions.R`. For example, the `randomGraph()` function provides an Erdos-Renyi graph where the probability of an arc or link existing between any two nodes is explicitly defined within the argument `0 < p < 1`.
 
-	> erdosRenyi <- randomGraph(n = 50, 
-								p = 0.05)
-	> plot(graph_from_data_frame(erdosRenyi,
-		                         directed = FALSE),
-		   vertex.color = "orange",
-		   vertex.label = NA,
-		   vertex.label.dist = 3,
-		   vertex.size = 5,
-		   edge.color = "gray50",
-		   edge.arrow.size = 0)
+	> erdosRenyi <- randomGraph(
+	    n = 50,
+	    p = 0.05)
+	> plot(graph_from_data_frame(
+	    erdosRenyi,
+      directed = FALSE),
+		  vertex.color = "orange",
+		  vertex.label = NA,
+		  vertex.label.dist = 3,
+		  vertex.size = 5,
+		  edge.color = "gray50",
+		  edge.arrow.size = 0)
 
 
-This provides the following graph
+This generates the following graph:
 
-![](data/images/erdosRenyi50.png "Random graph of 50 nodes with p = 0.05")
+![](images/erdosRenyi50.png "Random graph of 50 nodes with p = 0.05")

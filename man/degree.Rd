@@ -18,4 +18,3 @@ This function calculates the degree of all nodes in the network. This includes c
 degree()
 }
 \keyword{degree}
-

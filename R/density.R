@@ -9,18 +9,19 @@
 #' @examples
 #' density()
 
-density <- function(edgeList, nodeList, undirected) {
-  if (missing(undirected)) { undirected <- FALSE }
-  edges <- unique(edgeList[,])
-  if (undirected == TRUE) {
-    undirectedNet <- rbind(edges,
-                           data.frame(sources = edges[, 2],
-                                      targets = edges[, 1]))
-    undirectedNet <- unique(undirectedNet[,])
+density <- function(edgeList, nodeList, undirected = TRUE) {
+  edges <- unique(edgeList[, ])
+  if (undirected) {
+    undirectedNet <- rbind(
+      edges,
+      data.frame(
+        sources = edges[, 2],
+        targets = edges[, 1]))
+    undirectedNet <- unique(undirectedNet[, ])
     density <- nrow(undirectedNet) / (nrow(nodeList) * (nrow(nodeList) - 1))
-    return(density)
+  } else {
+    edges <- unique(edgeList[, ])
+    density <- nrow(edges) / (nrow(nodeList) * (nrow(nodeList) - 1))
   }
-  edges <- unique(edgeList[,])
-  density <- nrow(edges) / (nrow(nodeList) * (nrow(nodeList) - 1))
   return(density)
 }

@@ -29,4 +29,3 @@ This function calculates the brokerage of each node given its existence in criti
 nodeSetBrokerage()
 }
 \keyword{brokerage}
-

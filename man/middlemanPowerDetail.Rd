@@ -21,4 +21,3 @@ middlemanPowerDetail()
 }
 \keyword{brokerage}
 \keyword{middleman}
-

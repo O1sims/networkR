@@ -19,4 +19,3 @@ affiliationSet()
 }
 \keyword{affiliation}
 \keyword{projection}
-

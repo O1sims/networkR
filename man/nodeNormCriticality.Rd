@@ -29,4 +29,3 @@ This function calculates the normalised criticality of each node in the network.
 nodeNormCriticality()
 }
 \keyword{criticality}
-

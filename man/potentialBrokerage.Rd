@@ -21,4 +21,3 @@ potentialBrokerage()
 }
 \keyword{brokerage}
 \keyword{middleman}
-

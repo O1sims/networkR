@@ -16,4 +16,3 @@ This function filters a network such that it removes any duplicated connections,
 filterNetwork()
 }
 \keyword{filter}
-

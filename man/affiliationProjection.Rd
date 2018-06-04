@@ -17,4 +17,3 @@ affiliationProjection()
 }
 \keyword{affiliation}
 \keyword{projection}
-

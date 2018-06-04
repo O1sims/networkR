@@ -4,7 +4,7 @@
 \alias{density}
 \title{Density of a network}
 \usage{
-density(edgeList, nodeList, undirected)
+density(edgeList, nodeList, undirected = TRUE)
 }
 \arguments{
 \item{edgeList}{A dataframe of network data within which sources are in the first column and targets are in the second column.}
@@ -20,4 +20,3 @@ This function calculates the density of a network graph.
 density()
 }
 \keyword{density}
-

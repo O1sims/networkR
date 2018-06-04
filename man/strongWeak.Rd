@@ -21,4 +21,3 @@ strongWeak()
 }
 \keyword{brokerage}
 \keyword{middleman}
-

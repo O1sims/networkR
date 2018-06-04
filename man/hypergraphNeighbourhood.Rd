@@ -19,4 +19,3 @@ hypergraphNeighbourhood()
 }
 \keyword{neighbour}
 \keyword{neighbourhood}
-

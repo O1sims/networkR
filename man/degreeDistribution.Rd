@@ -19,4 +19,3 @@ degreeDistribution()
 }
 \keyword{degree}
 \keyword{distribution}
-

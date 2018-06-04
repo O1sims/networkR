@@ -19,4 +19,3 @@ adjacencyMatrix()
 }
 \keyword{adjacency}
 \keyword{matrix}
-
