@@ -173,12 +173,14 @@ The criticality of individual nodes can be calculated from all potential SNE blo
 
 ## 4 Analysing hypergraphs
 
-A set of functions for analysing hypergraphs is also provided. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a nodes' or an affiiations' "control" within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. 
+A set of functions for analysing [hypergraphs](https://en.wikipedia.org/wiki/Hypergraph) are provided in the package. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a node or an affiiations 'control' within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. Within the realm of socio-economic networks, the best application of hypergraphs come in the form of corporate directorate networks. Two such examples are provided in the dataset alongside this package: (1) New York City (NYC) corporate directors of 1902; and (2) The corporate directors of Victorian Britain (1880-1900).
 
-**NYC corporate directors:** Using the NYC Directorate data we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
+**NYC corporate directors:** Using the NYC Directorate data (1902) we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
 
-    > data(list = c("nycNodes", "nycAffiliations", "nycHypergraph"))
-    > projection <- filterNetwork(affiliationProjection(nycHypergraph))
+    > c("nycNodes", "nycAffiliations", "nycHypergraph") %>% data()
+    > projection <- nycHypergraph %>%
+    affiliationProjection() %>%
+    filterNetwork()
     > plot(graph_from_data_frame(projection,
                                  directed = FALSE),
             vertex.color = nycAffiliations$types,
@@ -192,7 +194,7 @@ A set of functions for analysing hypergraphs is also provided. These functions r
 
 ![](images/weightedInstitutions.png "Overlapping directorate network of NYC")
 
-**Victorian Britain directors:** The Victorian Britain directorate data can also be used in much the same way. See the code below:
+**Victorian Britain directors:** The Victorian Britain directorate data (1880-1900), which can be found in its raw format [here](https://github.com/O1sims/VictorianBritainDirectors), can also be used in much the same way. See the code below:
 ```
 > data(list = c("vbdNodes", "vbdAffiliations", "vbdHypergraph"))
 > projection <- vbdHypergraph %>%
@@ -209,7 +211,7 @@ A set of functions for analysing hypergraphs is also provided. These functions r
     edge.color = "grey50",
     edge.arrow.size = 0)
 ```
-This generates the following institutional overlap.
+This generates the following institutional overlap for firms in 1880.
 
 ![](images/victorian-britain-institutions.png "Overlapping directorate of firms in Victorian Britain")
 
