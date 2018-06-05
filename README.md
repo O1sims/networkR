@@ -173,7 +173,11 @@ The criticality of individual nodes can be calculated from all potential SNE blo
 
 ## 4 Analysing hypergraphs
 
-A set of functions for analysing [hypergraphs](https://en.wikipedia.org/wiki/Hypergraph) are provided in the package. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a node or an affiiations 'control' within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. Within the realm of socio-economic networks, the best application of hypergraphs come in the form of corporate directorate networks. Two such examples are provided in the dataset alongside this package: (1) New York City (NYC) corporate directors of 1902; and (2) The corporate directors of Victorian Britain (1880-1900).
+A set of functions for analysing [hypergraphs](https://en.wikipedia.org/wiki/Hypergraph) are provided in the package. These functions revolve around the projection of hypergraphs into different network structures and the measurement of a node or an affiiations "control" within the hypergraph. This notion of control as a centrality measure is represented by the sigma score and beta measures within hypergraphs. Within the realm of socio-economic networks, the best application of hypergraphs come in the form of corporate directorate networks. 
+
+Two such examples are provided in the dataset alongside this package:
+1. New York City (NYC) corporate directors of 1902; and 
+2. The corporate directors of Victorian Britain between 1880 and 1900.
 
 **NYC corporate directors:** Using the NYC Directorate data (1902) we can illustrate an example of an affiliation projection of the directorate hypergraph. Consider the following code.
 
